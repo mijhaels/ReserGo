@@ -1,0 +1,6 @@
+<app-list-window 
+    title="Categoria de Productos"
+    [columns]="columns"
+    [source]="source"
+    (create)="onNew()"
+    (selection)="onSelect($event)"></app-list-window>

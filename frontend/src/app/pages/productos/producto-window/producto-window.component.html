@@ -1,0 +1,43 @@
+<app-window [title]="title" (save)="onSave()" [nuevo]="nuevo" (delete)="onDelete()">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>ID (autonumerado)</mat-label>
+                    <input matInput [readonly]="true" formControlName="id">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre del Producto*</mat-label>
+                    <input matInput formControlName="nombre" autocomplete="off" >
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Categoría del Producto*</mat-label>
+                    <mat-select formControlName="categoriaProductoId">
+                      <mat-option *ngFor="let categoriaProducto of categoriaProductos" [value]="categoriaProducto.id">
+                        {{categoriaProducto.id}} - {{categoriaProducto.nombre}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Precio (GS)*</mat-label>
+                    <input #precio matInput autocomplete="off" (keyup)="changePrecio(precio.value)" (keydown)="isADigit($event)"
+                        [formControl]="precioFormControl" [value]="this.formGroup.get('precio')?.value | currency: 'PYG': '': '': 'es-AR'">
+                    <mat-error style="display: inline-flex!;">Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</app-window>

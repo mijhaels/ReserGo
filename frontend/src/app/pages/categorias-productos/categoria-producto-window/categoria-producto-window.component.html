@@ -1,0 +1,21 @@
+<app-window [title]="title" (save)="onSave()" (delete)="onDelete()" [nuevo]="nuevo">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>ID (autonumerado)</mat-label>
+                    <input matInput [readonly]="true" formControlName="id">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre de la Categoría del Producto*</mat-label>
+                    <input matInput formControlName="nombre" autocomplete="off" >
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</app-window>

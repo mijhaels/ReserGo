@@ -1,0 +1,25 @@
+
+<form [formGroup]="formGroup">
+    <div class="row">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Producto*</mat-label>
+            <mat-select formControlName="productoId">
+                <mat-option *ngFor="let producto of productos" [value]="producto.id">
+                    {{producto.id}} - {{producto.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Cantidad*</mat-label>
+            <input #cantidad matInput autocomplete="off" (keyup)="changeCantidad(cantidad.value)" (keydown)="isADigit($event)"
+                [formControl]="cantidadFormControl" [value]="this.formGroup.get('cantidad')?.value | currency: 'PYG': '': '': 'es-AR'">
+            <mat-error style="display: inline-flex!;">Campo requerido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Total (GS)*</mat-label>
+            <input #total matInput autocomplete="off" (keyup)="changeTotal(total.value)" (keydown)="isADigit($event)"
+                [formControl]="totalFormControl" [value]="this.formGroup.get('total')?.value | currency: 'PYG': '': '': 'es-AR'">
+            <mat-error style="display: inline-flex!;">Campo requerido</mat-error>
+        </mat-form-field>
+    </div>
+</form>

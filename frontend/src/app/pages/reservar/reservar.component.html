@@ -1,0 +1,125 @@
+<nb-card>
+    <nb-card-header>
+        Reservar mesa
+        <button nbButton (click)="onSave()" status="primary"><nb-icon icon="save" pack="fas"></nb-icon>
+        </button>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha*</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Fecha inválida</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Horarios*</mat-label>
+                        <mat-select formControlName="horarios" multiple>
+                          <mat-option *ngFor="let horario of horarios" [value]="horario.id">
+                            {{horario.text}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cedula cliente*</mat-label>
+                        <input matInput autocomplete="off" formControlName="cedulaCliente">
+                        <mat-error>Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Nombre cliente*</mat-label>
+                        <input matInput autocomplete="off" formControlName="nombreCliente">
+                        <mat-error>Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Apellido cliente*</mat-label>
+                        <input matInput autocomplete="off" formControlName="apellidoCliente">
+                        <mat-error>Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Restaurante*</mat-label>
+                        <mat-select formControlName="restauranteId">
+                          <mat-option *ngFor="let restaurante of restaurantes" [value]="restaurante.id">
+                            {{restaurante.id}} - {{restaurante.nombre}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Planta*</mat-label>
+                        <mat-select formControlName="planta">
+                          <mat-option *ngFor="let planta of getPlantas(formGroup.get('restauranteId').value)" [value]="planta">
+                            {{ planta }}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cantidad*</mat-label>
+                        <input matInput formControlName="cantidad" type="number" autocomplete="off">
+                        <mat-error>Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="title mb-3">
+                Escoja su mesa
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-4">
+                    <p-table styleClass="w-100" [value]="ejex">
+                        <ng-template pTemplate="body" let-xvalue let-columns="ejex">
+                            <tr>
+                                <td *ngFor="let yvalue of ejey" (click)="seleccionarMesa({x: xvalue, y: yvalue})"
+                                    (click)="checkNoDisponible({x: xvalue, y: yvalue})">
+                                    <div *ngIf="mesaSeleccionada(({x: xvalue, y: yvalue}))"
+                                        matTooltip="{{getNombre({x: xvalue, y: yvalue})}}, capacidad {{getCapacidad({x: xvalue, y: yvalue})}}">
+                                        <nb-icon icon="map-marker-alt" pack="fas" class="mesa-seleccionada"></nb-icon>
+                                    </div>
+                                    <div *ngIf="existeMesa({x: xvalue, y: yvalue}) && 
+                                        mesaOcupada({x: xvalue, y: yvalue}) && formGroup.get('planta').value" 
+                                        matTooltip="{{getNombre({x: xvalue, y: yvalue})}}, capacidad {{getCapacidad({x: xvalue, y: yvalue})}}">
+                                        <nb-icon class="ocupado-icon" icon="times-circle" pack="fas"></nb-icon>
+                                    </div>
+                                    <div class="mesa-libre"
+                                        *ngIf="existeMesa({x: xvalue, y: yvalue}) && !mesaSeleccionada({x: xvalue, y: yvalue}) &&
+                                        !mesaOcupada({x: xvalue, y: yvalue}) && formGroup.get('planta').value" 
+                                        matTooltip="{{getNombre({x: xvalue, y: yvalue})}}, capacidad {{getCapacidad({x: xvalue, y: yvalue})}}">
+                                        <nb-icon icon="map-marker-alt" pack="fas"></nb-icon>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>

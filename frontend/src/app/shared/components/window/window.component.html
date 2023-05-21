@@ -1,0 +1,14 @@
+<nb-card>
+    <nb-card-header>{{ title }}
+        <span>
+            <button nbButton (click)="onSave()" status="primary"><nb-icon icon="save" pack="fas"></nb-icon>
+            </button>
+            <button nbButton (click)="onDelete()" status="primary" *ngIf="!nuevo">
+                <nb-icon icon="trash" pack="fas" class="save-button"></nb-icon>
+            </button>
+        </span>
+    </nb-card-header>
+    <nb-card-body>
+        <ng-content select="form"></ng-content>
+    </nb-card-body>
+</nb-card>

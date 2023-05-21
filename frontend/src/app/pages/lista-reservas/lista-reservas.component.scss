@@ -1,0 +1,26 @@
+@import '../../../themes.scss';
+
+@include nb-install-component() {
+    ::ng-deep .p-datatable th{
+        background-color: nb-theme(tree-grid-header-background-color);
+        color: nb-theme(tree-grid-header-text-color);
+        border-color: rgb(201, 201, 201);
+        border-bottom-width: nb-theme(tree-grid-cell-border-width);
+        border-right-width: nb-theme(tree-grid-cell-border-width);
+        border-left-width: nb-theme(tree-grid-cell-border-width);
+        border-top-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+    }
+
+    ::ng-deep .p-datatable td{
+        background-color: nb-theme(tree-grid-row-background-color);
+        color: nb-theme(tree-grid-row-text-color);
+        border-color: rgb(201, 201, 201);
+        border-bottom-width: nb-theme(tree-grid-cell-border-width);
+        border-right-width: nb-theme(tree-grid-cell-border-width);
+        border-left-width: nb-theme(tree-grid-cell-border-width);
+        border-top-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+        height: 3.3rem;
+    }
+}

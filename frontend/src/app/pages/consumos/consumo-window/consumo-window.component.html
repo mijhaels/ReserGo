@@ -1,0 +1,77 @@
+<app-window [title]="title" (save)="onSave()" (delete)="onDelete()" [nuevo]="nuevo">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>ID (autonumerado)</mat-label>
+                    <input matInput [readonly]="true" formControlName="id">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha/Hora creación (autoasignado)</mat-label>
+                    <input matInput [readonly]="true" [value]="formGroup.get('fecha_hora_creacion').value | date: 'dd/MM/yyy HH:mm:ss'">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha/Hora cierre (autoasignado)</mat-label>
+                    <input matInput [readonly]="true" [value]="formGroup.get('fecha_hora_cierre').value | date: 'dd/MM/yyy HH:mm:ss'">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Estado*</mat-label>
+                    <mat-select formControlName="estado" disabled>
+                        <mat-option value="abierto">
+                            Abierto
+                        </mat-option>
+                        <mat-option value="cerrado">
+                            Cerrado
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Cliente*</mat-label>
+                    <mat-select formControlName="clienteId">
+                      <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+                        {{cliente.cedula}} - {{cliente.nombre}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Mesa (Restaurante - Mesa)*</mat-label>
+                    <mat-select formControlName="mesaId">
+                      <mat-option *ngFor="let mesa of mesas" [value]="mesa.id">
+                        {{getRestaurante(mesa.restauranteId)?.nombre}} - {{mesa.nombre}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Total GS (calculado)</mat-label>
+                    <input matInput [readonly]="true" [value]="formGroup.get('total').value | currency: 'PYG': '': '': 'es-AR'">
+                </mat-form-field>
+            </div>
+        </div>
+        <button nbButton (click)="onNewDetalle()" status="primary" class="m-2">
+            <span><nb-icon icon="plus" pack="fas"></nb-icon> Agregar detalle</span>
+        </button>
+        <button nbButton outline (click)="cerrarConsumo()" status="primary" class="m-2" *ngIf="formGroup.get('estado')?.value === 'abierto'">
+            <span><nb-icon icon="plus" pack="fas"></nb-icon> Cerrar consumo</span>
+        </button>
+        <app-detail-table [source]="detalles.controls" [columns]="detalleColumns" [productos]="productos"
+         (selection)="onEditDetalle($event)" (delete)="onDeleteDetalle($event)"></app-detail-table>
+    </form>
+</app-window>

@@ -1,0 +1,39 @@
+
+<p-table [columns]="columns" [value]="source" styleClass="p-datatable p-datatable-sm p-datatable-gridlines" sortMode="multiple" dataKey="id"
+    [autoLayout]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" class="text-center">
+                <span><p-sortIcon [field]="col.field"></p-sortIcon> {{col.header}}</span>
+            </th>
+            <th colspan="2" class="text-center">Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns" class="text-center">
+                <span *ngIf="col.type === 'amount'">{{rowData.get(col.field)?.value | currency: 'PYG': '': '1.0-0': 'es-AR'}}</span>
+                <span *ngIf="col.type === 'date'">{{rowData.get(col.field)?.value | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                <span *ngIf="col.type === 'producto'">{{getProducto(rowData.get(col.field)?.value)?.id}} - {{getProducto(rowData.get(col.field)?.value)?.nombre}}</span>
+                <span *ngIf="col.type !== 'amount' && col.type !== 'date' && col.type !== 'producto'">{{rowData.get(col.field)?.value}}</span>
+            </td>
+            <td class="text-center">
+                <button nbButton outline (click)="onDelete(rowData)" status="danger">
+                    <span><nb-icon icon="trash" pack="fas"></nb-icon> Eliminar</span>
+                </button>
+            </td>
+            <td class="text-center">
+                <button nbButton outline (click)="onSelect(rowData)" status="primary">
+                    <span><nb-icon icon="edit" pack="fas"></nb-icon> Editar</span>
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+            <td [attr.colspan]="columns.length + 2">
+                No se encontraron datos
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

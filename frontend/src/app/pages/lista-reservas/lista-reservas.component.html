@@ -1,0 +1,78 @@
+<nb-card>
+    <nb-card-header>
+        Filtros - Listar reservas
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="formGroup" (ngSubmit)="run()">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha*</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Fecha inválida</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Restaurantes*</mat-label>
+                        <mat-select formControlName="restaurantes" multiple>
+                            <mat-option *ngFor="let restaurante of restaurantes" [value]="restaurante.id">
+                            {{restaurante.id}} - {{restaurante.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Clientes</mat-label>
+                        <mat-select formControlName="clientes" multiple>
+                            <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+                            {{cliente.id}} - {{cliente.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button nbButton status="primary" type="submit">
+                Listar reservas
+            </button>
+        </form>
+    </nb-card-body>
+</nb-card>
+<nb-card *ngIf="runned" [nbSpinner]="loading">
+    <nb-card-header>
+        Reservas
+    </nb-card-header>
+    <nb-card-body>
+        <p-table [columns]="columns" [value]="source" styleClass="p-datatable p-datatable-sm" sortMode="multiple" dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        <span>{{col.header}}</span>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        <span *ngIf="col.type === 'date'">{{rowData[col.field] | date: 'dd/MM/yyyy'}}</span>
+                        <span *ngIf="col.type !== 'date'">{{rowData[col.field]}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns.length">
+                        No se encontraron datos
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </nb-card-body>
+</nb-card>

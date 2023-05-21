@@ -1,0 +1,10 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+$nb-themes: nb-register-theme((
+    header-padding: 0.9rem,
+    header-height: 4rem,
+    layout-padding: 0.7rem,
+    header-background-color: rgb(51, 0, 133),
+    header-text-color: white,
+), default, default);

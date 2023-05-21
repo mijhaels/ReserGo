@@ -1,0 +1,134 @@
+@import '../../../../themes.scss';
+
+@include nb-install-component() {
+    button {
+        margin-left: 0.5rem;
+        width: 2.4rem!important;
+    }
+
+    .closed-status {
+        background: rgb(126, 216, 126);
+    }
+
+    .p-input-icon-right {
+        width: 100%;
+    }
+
+    .p-datatable-options {
+        background-color: nb-theme(tree-grid-header-background-color);
+    }
+    .fixed-bar {
+        position: fixed;
+        border-color: rgb(170, 170, 170);
+        background-color: white;
+        z-index: 99999999;
+        height: 3.2rem;
+        border: 1px solid rgb(206, 206, 206);
+        border-left: 0;
+        margin-top: -0.65rem;
+        margin-left: -0.65rem;
+        z-index: 1;
+        padding-left: 1rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        width: 110%!important;
+    }
+    ::ng-deep .p-datatable-header {
+        background: nb-theme(tree-grid-header-background-color);
+        color: nb-theme(tree-grid-header-text-color);
+        border-color: nb-theme(border-basic-color-2);
+        border-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+        padding-top: 1rem;
+    }
+
+    ::ng-deep .p-paginator-bottom {
+        background: nb-theme(tree-grid-footer-background-color);
+        color: nb-theme(tree-grid-footer-text-color);
+        border-color: nb-theme(background-basic-color-1);
+        border-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+    }
+
+    ::ng-deep .p-column-filter-operator{
+        background: nb-theme(tree-grid-header-background-color);
+        color: nb-theme(tree-grid-header-text-color);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+    }
+
+    ::ng-deep .p-datatable th{
+        background-color: nb-theme(tree-grid-header-background-color);
+        color: nb-theme(tree-grid-header-text-color);
+        border-color: nb-theme(border-basic-color-2);
+        border-bottom-width: nb-theme(tree-grid-cell-border-width);
+        border-right-width: nb-theme(tree-grid-cell-border-width);
+        border-left-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+    }
+
+    ::ng-deep .p-datatable td{
+        background-color: nb-theme(tree-grid-row-background-color);
+        color: nb-theme(tree-grid-row-text-color);
+        border-color: nb-theme(border-basic-color-2);
+        border-bottom-width: nb-theme(tree-grid-cell-border-width);
+        border-right-width: nb-theme(tree-grid-cell-border-width);
+        border-left-width: nb-theme(tree-grid-cell-border-width);
+        font-family: nb-theme(tree-grid-header-text-font-family);
+    }
+
+    ::ng-deep .p-datatable tr:hover {
+        td {
+            cursor: pointer;
+            background-color: #f8f9fa
+        }
+    }
+}
+
+:host ::ng-deep {    
+    .p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+        display: none;
+    }
+    .p-datatable-responsive .p-datatable-tbody > tr > td.mi-text-center {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    :host ::ng-deep {
+        .p-datatable {
+            &.p-datatable-responsive {
+                .p-datatable-thead > tr > th,
+                .p-datatable-tfoot > tr > td {
+                    display: none !important;
+                }
+                .p-datatable-tbody > tr > td.mi-text-center {
+                    text-align: left !important;
+                }
+                .p-datatable-tbody > tr > td {
+                    text-align: left;
+                    display: block;
+                    width: 100%;
+                    float: left;
+                    clear: left;
+                    border: 0 none;
+                    
+                    .p-column-title {
+                        padding: .4rem;
+                        min-width: 8rem;
+                        display: inline-block;
+                        margin: -.4em 1em -.4em -.4rem;
+                        font-weight: bold;
+                    }
+
+                    &:last-child {
+                        border-bottom: 1px solid var(--surface-d);
+                    }
+                }
+                
+            }
+        }
+        .text-center {
+            text-align: none!important;
+        }
+    }
+}

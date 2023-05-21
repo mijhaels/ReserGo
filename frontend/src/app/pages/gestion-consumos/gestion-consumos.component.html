@@ -1,0 +1,84 @@
+<nb-card>
+    <nb-card-header>
+        Gestionar consumos
+        <button nbButton (click)="onSave()" status="primary" class="button"
+            *ngIf="formGroup.get('id')?.value"><nb-icon icon="save" pack="fas"></nb-icon>
+        </button>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>ID (autonumerado)</mat-label>
+                        <input matInput [readonly]="true" formControlName="id">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha/Hora creación (autoasignado)</mat-label>
+                        <input matInput [readonly]="true" [value]="formGroup.get('fecha_hora_creacion').value | date: 'dd/MM/yyy HH:mm:ss'">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Mesa (Restaurante - Mesa)*</mat-label>
+                        <mat-select formControlName="mesaId">
+                          <mat-option *ngFor="let mesa of mesas" [value]="mesa.id">
+                            {{getRestaurante(mesa.restauranteId)?.nombre}} - {{mesa.nombre}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cliente CI</mat-label>
+                        <input matInput autocomplete="off" formControlName="cedulaCliente" [matAutocomplete]="auto">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                            <mat-option *ngFor="let cliente of getClientesFiltrados()" [value]="cliente.cedula">
+                              {{cliente.cedula}}
+                            </mat-option>
+                          </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cliente Nombre</mat-label>
+                        <input matInput autocomplete="off" formControlName="nombreCliente">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cliente Apellido</mat-label>
+                        <input matInput autocomplete="off" formControlName="apellidoCliente">
+                    </mat-form-field>
+                </div>
+            </div>
+            <button nbButton (click)="aperturarConsumo()" status="primary" class="m-2"
+                *ngIf="!formGroup.get('id')?.value">
+                <span><nb-icon icon="plus" pack="fas"></nb-icon> Aperturar consumo</span>
+            </button>
+            <div class="row" *ngIf="formGroup.get('id')?.value">
+                <div class="col-sm-12 col-md-8 col-lg-5">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Total GS (calculado)</mat-label>
+                        <input matInput [readonly]="true" [value]="formGroup.get('total').value | currency: 'PYG': '': '': 'es-AR'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <button nbButton (click)="onNewDetalle()" status="primary" class="m-2"
+                *ngIf="formGroup.get('id')?.value && formGroup.get('estado')?.value !== 'cerrado'">
+                <span><nb-icon icon="plus" pack="fas"></nb-icon> Agregar detalle</span>
+            </button>
+            <button nbButton outline (click)="cerrarConsumo()" status="primary" class="m-2"
+                *ngIf="formGroup.get('estado')?.value === 'abierto' && formGroup.get('id')?.value">
+                <span><nb-icon icon="plus" pack="fas"></nb-icon> Cerrar consumo</span>
+            </button>
+            <app-detail-table [source]="detalles.controls" [columns]="detalleColumns" [productos]="productos"
+                *ngIf="formGroup.get('id')?.value"
+             (selection)="onEditDetalle($event)" (delete)="onDeleteDetalle($event)"></app-detail-table>
+        </form>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,77 @@
+<app-window [title]="title" (save)="onSave()" [nuevo]="nuevo" (delete)="onDelete()">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>ID (autonumerado)</mat-label>
+                    <input matInput [readonly]="true" formControlName="id">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre*</mat-label>
+                    <input matInput formControlName="nombre" autocomplete="off" >
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Restaurante*</mat-label>
+                    <mat-select formControlName="restauranteId">
+                      <mat-option *ngFor="let restaurante of restaurantes" [value]="restaurante.id">
+                        {{restaurante.id}} - {{restaurante.nombre}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Planta*</mat-label>
+                    <mat-select formControlName="planta">
+                      <mat-option *ngFor="let planta of getPlantas(formGroup.get('restauranteId').value)" [value]="planta">
+                        {{ planta }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Capacidad*</mat-label>
+                    <input matInput formControlName="capacidad" type="number">
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="title mb-3">
+            Ubique la mesa en la planta {{ formGroup.get('planta').value}}
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-4">
+                <p-table styleClass="w-100" [value]="ejex">
+                    <ng-template pTemplate="body" let-xvalue let-columns="ejex">
+                        <tr>
+                            <td *ngFor="let yvalue of ejey" (click)="seleccionarUbicacion({x: xvalue, y: yvalue})">
+                                <div *ngIf="ubicacionOcupada({x: xvalue, y: yvalue})"
+                                matTooltip="Ubicación ocupada">
+                                    <nb-icon class="ocupado-icon" icon="times-circle" pack="fas"></nb-icon>
+                                </div>
+                                <div *ngIf="ubicacionActiva({x: xvalue, y: yvalue}) && formGroup.get('planta').value" 
+                                    matTooltip="Ubicación actual de la mesa">
+                                    <nb-icon icon="map-marker-alt" pack="fas"></nb-icon>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </form>
+</app-window>

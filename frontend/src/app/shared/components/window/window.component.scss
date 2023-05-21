@@ -1,0 +1,8 @@
+@import '../../../../themes.scss';
+
+@include nb-install-component() {
+    button {
+        margin-left: 0.5rem;
+        width: 2.4rem!important;
+    }
+}

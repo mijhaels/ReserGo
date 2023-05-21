@@ -1,0 +1,6 @@
+<app-list-window 
+    title="Clientes"
+    [columns]="columns"
+    [source]="source"
+    (create)="onNew()"
+    (selection)="onSelect($event)"></app-list-window>

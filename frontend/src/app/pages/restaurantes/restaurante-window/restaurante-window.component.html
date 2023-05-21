@@ -1,0 +1,39 @@
+<app-window [title]="title" (save)="onSave()" [nuevo]="nuevo" (delete)="onDelete()">
+    <form [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>ID (autonumerado)</mat-label>
+                    <input matInput [readonly]="true" formControlName="id">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre*</mat-label>
+                    <input matInput formControlName="nombre" autocomplete="off">
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nro. de plantas*</mat-label>
+                    <input matInput formControlName="plantas" type="number" autocomplete="off">
+                    <mat-error>Debe tener al menos una planta</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Dirección*</mat-label>
+                    <input matInput formControlName="direccion" autocomplete="off">
+                    <mat-error>Campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</app-window>
