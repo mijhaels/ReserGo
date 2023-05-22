@@ -7,7 +7,7 @@ const DB = {
     host: '127.0.0.1',
     database: 'parcial2',
     password: 'postgres',
-    port: 5433
+    port: 5432
 }
 
 const sequelize = new Sequelize({

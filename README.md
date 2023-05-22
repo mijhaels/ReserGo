@@ -34,7 +34,7 @@ npm start
 ```
 
 # Front End
-Para levantar el backend, primero debe posicionarse en la carpeta "backend" y luego correr los sigiuentes comandos
+Para levantar el frontend, primero debe posicionarse en la carpeta "frontend" y luego correr los sigiuentes comandos
 
 Primero se instalan todas las librerias necesarias
 ```
