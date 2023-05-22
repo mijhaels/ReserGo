@@ -1,7 +1,7 @@
 <app-window [title]="title" (save)="onSave()" [nuevo]="nuevo" (delete)="onDelete()">
     <form [formGroup]="formGroup">
         <div class="row">
-            <div class="col-sm-12 col-md-8 col-lg-5">
+            <div class="col-sm-12 col-md-8 col-lg-5" *ngIf="!nuevo">
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>ID (autonumerado)</mat-label>
                     <input matInput [readonly]="true" formControlName="id">

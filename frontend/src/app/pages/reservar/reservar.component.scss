@@ -3,7 +3,6 @@
 @include nb-install-component() {
     button {
         margin-left: 0.5rem;
-        width: 2.4rem!important;
     }
     .title {
         font-size: 1.5rem;
@@ -45,5 +44,20 @@
     }
     .mesa-seleccionada {
         color: rgb(19, 167, 0);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-header-title {
+        flex: 1;
+        text-align: left;
+    }
+
+    .card-header-button {
+        text-align: right;
     }
 }

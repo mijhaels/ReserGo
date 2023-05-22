@@ -15,31 +15,31 @@ export class PagesComponent implements OnInit {
         {
             icon: {icon: 'utensils', pack: 'fas'},
             title: 'Restaurantes',
-            link: '/sitio/restaurantes',
+            link: '/reservas-app/restaurantes',
             pathMatch: 'prefix'
         },
         {
             icon: {icon: 'map-marker-alt', pack: 'fas'},
             title: 'Mesas',
-            link: '/sitio/mesas',
+            link: '/reservas-app/mesas',
             pathMatch: 'prefix'
         },
         {
             icon: {icon: 'user', pack: 'fas'},
             title: 'Clientes',
-            link: '/sitio/clientes',
+            link: '/reservas-app/clientes',
             pathMatch: 'prefix'
         },
         {
             icon: {icon: 'check-double', pack: 'fas'},
             title: 'Reservar mesa',
-            link: '/sitio/reservar',
+            link: '/reservas-app/reservar',
             pathMatch: 'prefix'
         },
         {
             icon: {icon: 'list', pack: 'fas'},
             title: 'Listar reservas',
-            link: '/sitio/lista-reservas',
+            link: '/reservas-app/lista-reservas',
             pathMatch: 'prefix'
         },
         // {
@@ -49,25 +49,25 @@ export class PagesComponent implements OnInit {
         // {
         //     icon: {icon: 'tag', pack: 'fas'},
         //     title: 'Categoría de Productos',
-        //     link: '/sitio/categorias-productos',
+        //     link: '/reservas-app/categorias-productos',
         //     pathMatch: 'prefix'
         // },
         // {
         //     icon: {icon: 'hamburger', pack: 'fas'},
         //     title: 'Productos',
-        //     link: '/sitio/productos',
+        //     link: '/reservas-app/productos',
         //     pathMatch: 'prefix'
         // },
         // {
         //     icon: {icon: 'cookie-bite', pack: 'fas'},
         //     title: 'Consumos',
-        //     link: '/sitio/consumos',
+        //     link: '/reservas-app/consumos',
         //     pathMatch: 'prefix'
         // },
         // {
         //     icon: {icon: 'receipt', pack: 'fas'},
         //     title: 'Gestión de consumos',
-        //     link: '/sitio/gestion-consumos',
+        //     link: '/reservas-app/gestion-consumos',
         //     pathMatch: 'prefix'
         // }
     ];

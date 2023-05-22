@@ -10,7 +10,7 @@ import { MesaService } from '../../../services/abm/mesa.service';
 })
 export class MesaListComponent implements OnInit {
     source: MesaModel[] = [];
-    url = '/sitio/mesas';
+    url = '/reservas-app/mesas';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },

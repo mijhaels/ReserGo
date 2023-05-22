@@ -1,12 +1,16 @@
 <nb-card>
-    <nb-card-header>{{ title }}
-        <span>
-            <button nbButton (click)="onSave()" status="primary"><nb-icon icon="save" pack="fas"></nb-icon>
+    <nb-card-header class="card-header">
+        <div class="card-header-tittle">{{ title }}</div>
+        <div class="card-header-button">
+            <button nbButton (click)="onSave()" status="primary" >
+                <nb-icon icon="save" pack="fas"></nb-icon>
+                &nbsp; Guardar
             </button>
             <button nbButton (click)="onDelete()" status="primary" *ngIf="!nuevo">
                 <nb-icon icon="trash" pack="fas" class="save-button"></nb-icon>
+                &nbsp; Eliminar
             </button>
-        </span>
+        </div>
     </nb-card-header>
     <nb-card-body>
         <ng-content select="form"></ng-content>

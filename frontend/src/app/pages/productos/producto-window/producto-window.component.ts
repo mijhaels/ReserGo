@@ -137,7 +137,7 @@ export class ProductoWindowComponent implements OnInit {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/productos']);
+                    this.router.navigate(['/reservas-app/productos']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -157,7 +157,7 @@ export class ProductoWindowComponent implements OnInit {
         try {
             const resp = await this.productoService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/productos']);
+                this.router.navigate(['/reservas-app/productos']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,

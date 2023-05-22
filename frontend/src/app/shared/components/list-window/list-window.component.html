@@ -1,7 +1,14 @@
 <nb-card [nbSpinner]="loading">
-    <nb-card-header>
-        {{ title }}
-        <button nbButton (click)="onNew()" status="primary"><nb-icon icon="plus" pack="fas" class="new-button"></nb-icon></button>
+    <nb-card-header class="card-header">
+        <div class="card-header-title">
+            {{ title }}
+        </div>
+        <div class="card-header-button">
+            <button nbButton (click)="onNew()" status="primary">
+                <nb-icon icon="plus" pack="fas" class="new-button"></nb-icon>
+                &nbsp; Crear
+            </button>
+        </div>
     </nb-card-header>
     <nb-card-body>
         <p-table [columns]="columns" [value]="source" styleClass="p-datatable p-datatable-sm" sortMode="multiple" dataKey="id">

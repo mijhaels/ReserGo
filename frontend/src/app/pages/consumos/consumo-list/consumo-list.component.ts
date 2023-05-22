@@ -10,7 +10,7 @@ import { ConsumoService } from '../../../services/abm/consumo.service';
 })
 export class ConsumoListComponent implements OnInit {
     source: ConsumoModel[] = [];
-    url = '/sitio/consumos';
+    url = '/reservas-app/consumos';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'estado', header: 'Estado', type: 'status' },

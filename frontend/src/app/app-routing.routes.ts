@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
-        path: 'sitio',
+        path: 'reservas-app',
         loadChildren: () => import('./pages/pages.module')
           .then(m => m.PagesModule),
     },
-    {path: '**', redirectTo: 'sitio'}
+    {path: '**', redirectTo: 'reservas-app'}
 ];
 
 @NgModule({

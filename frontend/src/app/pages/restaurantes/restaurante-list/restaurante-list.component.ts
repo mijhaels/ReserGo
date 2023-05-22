@@ -10,7 +10,7 @@ import { RestauranteService } from '../../../services/abm/restaurante.service';
 })
 export class RestauranteListComponent implements OnInit {
     source: RestauranteModel[] = [];
-    url = '/sitio/restaurantes';
+    url = '/reservas-app/restaurantes';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },

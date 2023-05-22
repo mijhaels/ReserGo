@@ -10,7 +10,7 @@ import { CategoriaProductoModel } from '../../../models/categoria-producto';
 })
 export class CategoriaProdcutoListComponent implements OnInit {
     source: CategoriaProductoModel[] = [];
-    url = '/sitio/categorias-productos';
+    url = '/reservas-app/categorias-productos';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },

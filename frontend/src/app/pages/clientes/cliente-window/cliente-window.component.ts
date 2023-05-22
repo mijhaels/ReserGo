@@ -63,7 +63,7 @@ export class ClienteWindowComponent implements OnInit {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/clientes']);
+                    this.router.navigate(['/reservas-app/clientes']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -83,7 +83,7 @@ export class ClienteWindowComponent implements OnInit {
         try {
             const resp = await this.clienteService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/clientes']);
+                this.router.navigate(['/reservas-app/clientes']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,

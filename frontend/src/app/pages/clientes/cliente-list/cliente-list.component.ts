@@ -10,7 +10,7 @@ import { ClienteModel } from '../../../models/cliente';
 })
 export class ClienteListComponent implements OnInit {
     source: ClienteModel[] = [];
-    url = '/sitio/clientes';
+    url = '/reservas-app/clientes';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'cedula', header: 'Cedula', type: 'numeric' },

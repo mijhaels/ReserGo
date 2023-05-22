@@ -10,7 +10,7 @@ import { ProductoService } from '../../../services/abm/producto.service';
 })
 export class ProductoListComponent implements OnInit {
     source: ProductoModel[] = [];
-    url = '/sitio/productos';
+    url = '/reservas-app/productos';
     columns = [
         { field: 'id', header: 'ID', type: 'numeric' },
         { field: 'nombre', header: 'Nombre', type: 'text' },

@@ -1,8 +1,14 @@
 <nb-card>
-    <nb-card-header>
-        Reservar mesa
-        <button nbButton (click)="onSave()" status="primary"><nb-icon icon="save" pack="fas"></nb-icon>
-        </button>
+    <nb-card-header class="card-header">
+        <div class="card-header-title">
+            Reservar mesa
+        </div>
+        <div class="card-header-button">
+            <button nbButton (click)="onSave()" status="primary">
+                <nb-icon icon="save" pack="fas"></nb-icon>
+                &nbsp; Guardar
+            </button>
+        </div>
     </nb-card-header>
     <nb-card-body>
         <form [formGroup]="formGroup">

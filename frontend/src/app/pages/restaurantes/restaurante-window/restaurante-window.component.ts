@@ -64,7 +64,7 @@ export class RestauranteWindowComponent implements OnInit {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/restaurantes']);
+                    this.router.navigate(['/reservas-app/restaurantes']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -84,7 +84,7 @@ export class RestauranteWindowComponent implements OnInit {
         try {
             const resp = await this.restauranteService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/restaurantes']);
+                this.router.navigate(['/reservas-app/restaurantes']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,

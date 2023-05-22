@@ -242,7 +242,7 @@ export class MesaWindowComponent implements OnInit {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/mesas']);
+                    this.router.navigate(['/reservas-app/mesas']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -262,7 +262,7 @@ export class MesaWindowComponent implements OnInit {
         try {
             const resp = await this.mesaService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/mesas']);
+                this.router.navigate(['/reservas-app/mesas']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,

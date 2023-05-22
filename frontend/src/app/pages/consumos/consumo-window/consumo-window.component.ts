@@ -258,7 +258,7 @@ export class ConsumoWindowComponent implements OnInit, OnDestroy {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/consumos']);
+                    this.router.navigate(['/reservas-app/consumos']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -278,7 +278,7 @@ export class ConsumoWindowComponent implements OnInit, OnDestroy {
         try {
             const resp = await this.consumoService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/consumos']);
+                this.router.navigate(['/reservas-app/consumos']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,

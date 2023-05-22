@@ -63,7 +63,7 @@ export class CategoriaProductoWindowComponent implements OnInit {
                 const resp = await model.save();
                 console.log(resp);
                 if (resp.ok) {
-                    this.router.navigate(['/sitio/categorias-productos']);
+                    this.router.navigate(['/reservas-app/categorias-productos']);
                     this.toastrService.show(
                         `id: ${resp.resp.id}`,
                         `${resp.msg}`,
@@ -83,7 +83,7 @@ export class CategoriaProductoWindowComponent implements OnInit {
         try {
             const resp = await this.categoriaProductoService.delete(this.formGroup.get('id').value);
             if (resp.ok) {
-                this.router.navigate(['/sitio/categorias-productos']);
+                this.router.navigate(['/reservas-app/categorias-productos']);
                 this.toastrService.show(
                     `id: ${resp.resp.id}`,
                     `${resp.msg}`,
