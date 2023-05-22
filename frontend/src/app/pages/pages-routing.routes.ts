@@ -9,13 +9,6 @@ import { MesaListComponent } from './mesas/mesa-list/mesa-list.component';
 import { MesaWindowComponent } from './mesas/mesa-window/mesa-window.component';
 import { ReservarComponent } from './reservar/reservar.component';
 import { ListaReservasComponent } from './lista-reservas/lista-reservas.component';
-import { CategoriaProdcutoListComponent } from './categorias-productos/categoria-producto-list/categoria-producto-list.component';
-import { CategoriaProductoWindowComponent } from './categorias-productos/categoria-producto-window/categoria-producto-window.component';
-import { ProductoListComponent } from './productos/producto-list/producto-list.component';
-import { ProductoWindowComponent } from './productos/producto-window/producto-window.component';
-import { ConsumoListComponent } from './consumos/consumo-list/consumo-list.component';
-import { ConsumoWindowComponent } from './consumos/consumo-window/consumo-window.component';
-import { GestionConsumosComponent } from './gestion-consumos/gestion-consumos.component';
 
 const routes: Routes = [
     {
@@ -30,13 +23,6 @@ const routes: Routes = [
             {path: 'mesas/:id', component: MesaWindowComponent},
             {path: 'reservar', component: ReservarComponent},
             {path: 'lista-reservas', component: ListaReservasComponent},
-            {path: 'categorias-productos', component: CategoriaProdcutoListComponent},
-            {path: 'categorias-productos/:id', component: CategoriaProductoWindowComponent},
-            {path: 'productos', component: ProductoListComponent},
-            {path: 'productos/:id', component: ProductoWindowComponent},
-            {path: 'consumos', component: ConsumoListComponent},
-            {path: 'consumos/:id', component: ConsumoWindowComponent},
-            {path: 'gestion-consumos', component: GestionConsumosComponent},
             {path: '**', redirectTo: 'restaurantes'}
         ]
     }

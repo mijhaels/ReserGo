@@ -8,10 +8,6 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class PagesComponent implements OnInit {
     menuItems: NbMenuItem[] = [
-        // {
-        //     title: 'Segundo parcial',
-        //     group: true
-        // },
         {
             icon: {icon: 'utensils', pack: 'fas'},
             title: 'Restaurantes',
@@ -42,34 +38,6 @@ export class PagesComponent implements OnInit {
             link: '/reservas-app/lista-reservas',
             pathMatch: 'prefix'
         },
-        // {
-        //     title: 'Primer final',
-        //     group: true
-        // },
-        // {
-        //     icon: {icon: 'tag', pack: 'fas'},
-        //     title: 'Categoría de Productos',
-        //     link: '/reservas-app/categorias-productos',
-        //     pathMatch: 'prefix'
-        // },
-        // {
-        //     icon: {icon: 'hamburger', pack: 'fas'},
-        //     title: 'Productos',
-        //     link: '/reservas-app/productos',
-        //     pathMatch: 'prefix'
-        // },
-        // {
-        //     icon: {icon: 'cookie-bite', pack: 'fas'},
-        //     title: 'Consumos',
-        //     link: '/reservas-app/consumos',
-        //     pathMatch: 'prefix'
-        // },
-        // {
-        //     icon: {icon: 'receipt', pack: 'fas'},
-        //     title: 'Gestión de consumos',
-        //     link: '/reservas-app/gestion-consumos',
-        //     pathMatch: 'prefix'
-        // }
     ];
     constructor() { }
 
