@@ -17,7 +17,7 @@ export class MesaWindowComponent implements OnInit {
     nuevo: boolean;
     restaurantes: any[] = [];
     ubicacionesOcupadas: Punto[] = [];
-    dimensionMapa = 10;
+    dimensionMapa = 5;
 
     get ubicacion(): Punto {
         return {

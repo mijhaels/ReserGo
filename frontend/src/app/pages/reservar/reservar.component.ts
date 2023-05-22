@@ -20,7 +20,7 @@ export class ReservarComponent implements OnInit {
     mesas: any[] = [];
     clientes: any[] = [];
     reservas: any[] = [];
-    dimensionMapa = 10;
+    dimensionMapa = 5;
     horarios = HORARIOS_RESERVA;
 
     get ejex(): number[] {

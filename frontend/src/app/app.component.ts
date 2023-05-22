@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    title = 'Reservas';
+    title = 'Reservas-App';
     constructor(
         private iconLibraries: NbIconLibraries,
     ) {
