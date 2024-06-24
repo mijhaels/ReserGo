@@ -19,7 +19,7 @@ registerLocaleData(localeEsPY);
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        NbThemeModule.forRoot({ name: 'default' }),
+        NbThemeModule.forRoot({ name: 'corporate' }),
     ],
     providers: [],
     bootstrap: [AppComponent]
