@@ -27,7 +27,7 @@
         "@nebular/theme": "^7.0.0",
         "bootstrap": "^5.0.0",
         "eva-icons": "^1.1.2",
-        "jspdf": "^2.3.1",
+        "jspdf": "^3.0.0",
         "jspdf-autotable": "^3.5.14",
         "primeflex": "^2.0.0",
         "primeicons": "^4.1.0",
